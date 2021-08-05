@@ -2,7 +2,6 @@ INCLUDE "inc/constants.inc"
 
 
 
-
 SECTION "game", ROMX
 load_game_data::
 	ld bc, Sprites_grass_end - Sprites_grass

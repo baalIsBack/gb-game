@@ -1,5 +1,4 @@
 INCLUDE "inc/constants.inc"
-INCLUDE "assets/sprites_player.inc"
 
 
 SECTION "player_vars", WRAM0
