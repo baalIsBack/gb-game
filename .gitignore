@@ -2,4 +2,4 @@ obj/*
 !obj/.gitkeep
 obj_assets/*
 !obj_assets/.gitkeep
-flappy-boy-asm-master/*
+flappy-boy-asm-master/
