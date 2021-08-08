@@ -76,7 +76,6 @@ Main:
 	call load_dma_routine
 
     reset
-    call read_joypad
     call wait_vblank
     call lcd_off
 
@@ -85,13 +84,17 @@ Main:
     call lcd_on
 
 .Main_loop:
+	xor a, a
+	di ; prevent race condition
+	ld [VBLANK_FLAG], a
+.vblank_loop:
 	ei
 	halt
+	di
 	ld a, [VBLANK_FLAG]
 	and a;check for a == 0
-	jr z, .Main_loop
-	xor a, a
-	ld [VBLANK_FLAG], a
+	jr z, .vblank_loop
+	
 	call DMA_ROUTINE
 
     call draw_game

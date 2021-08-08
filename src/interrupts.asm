@@ -12,7 +12,7 @@ SECTION "int $28", ROM0[$0028]
 	reti
 SECTION "int $30", ROM0[$0030]
 	reti
-SECTION "int $38", ROM0[$0038]
+SECTION "int $38", ROM0[$0038]; error handler
 	reti
 SECTION "int $40", ROM0[$0040]; Vblank interrupt
     push hl
@@ -20,17 +20,11 @@ SECTION "int $40", ROM0[$0040]; Vblank interrupt
     ld [hl], 1
     pop hl
     reti
-SECTION "int $48", ROM0[$0048]; Timer overflow interrupt
+SECTION "int $48", ROM0[$0048]; LCD STAT
 	reti
-SECTION "int $50", ROM0[$0050]; Serial transfer completion interrupt
+SECTION "int $50", ROM0[$0050]; Timer overflow interrupt
 	reti
-SECTION "int $58", ROM0[$0058]; P10-P13 signal low edge interrupt
+SECTION "int $58", ROM0[$0058]; Serial transfer completion interrupt
 	reti
-SECTION "int $60", ROM0[$0060]
-	reti
-SECTION "int $68", ROM0[$0068]
-	reti
-SECTION "int $70", ROM0[$0070]
-	reti
-SECTION "int $78", ROM0[$0078]
+SECTION "int $60", ROM0[$0060]; P10-P13 signal low edge interrupt
 	reti

@@ -23,14 +23,14 @@ VRAM_MAP_CHR            EQU    $9C00
 VRAM_MAP_BLOCK0_SIZE    EQU    $0800
 OAM_RAM                 EQU    $FE00
 DMA_ROUTINE             EQU    $FF80
-BUTTON_RIGHT            EQU    $0
-BUTTON_LEFT             EQU    $1
-BUTTON_UP               EQU    $2
-BUTTON_DOWN             EQU    $3
-BUTTON_A                EQU    $4
-BUTTON_B                EQU    $5
-BUTTON_SELECT           EQU    $6
-BUTTON_START            EQU    $7
+BUTTON_A                EQU    $0
+BUTTON_B                EQU    $1
+BUTTON_SELECT           EQU    $2
+BUTTON_START            EQU    $3
+BUTTON_RIGHT            EQU    $4
+BUTTON_LEFT             EQU    $5
+BUTTON_UP               EQU    $6
+BUTTON_DOWN             EQU    $7
 OAM_BUF                 EQU    $CF00
 
 ; defined in globals:

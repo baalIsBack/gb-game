@@ -31,9 +31,9 @@ ldir::
     inc de
     dec bc
     ld a, c
-    and a, a
+    or a, a
     jr nz, ldir
     ld a, b
-    and a, a
+    or a, a
     jr nz, ldir
     ret

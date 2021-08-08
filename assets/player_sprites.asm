@@ -1,5 +1,5 @@
 SECTION "sprites_player", ROMX
 
 Sprites_player::
-	db $00,$00,$24,$24,$24,$24,$24,$24, $00,$00,$42,$42,$3C,$3C,$00,$00
+	db $7E,$00,$FF,$24,$FF,$24,$FF,$24,$FF,$00,$FF,$42,$FF,$3C,$7E,$00
 Sprites_player_end::
