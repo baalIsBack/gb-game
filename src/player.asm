@@ -14,9 +14,9 @@ load_player_data::
 
 
     ld hl, PLAYER_Y
-    ld a, 8 + 8 * 1; PLAYER_Y
+    ld a, 16 + 8 * 1; PLAYER_Y
     ldi [hl], a
-    ld a, 16 + 8 * 1; PLAYER_X
+    ld a, 8 + 8 * 1; PLAYER_X
     ldi [hl], a
     ld a, %00000000
     ldi [hl], a
@@ -76,34 +76,53 @@ update_player::
 
     ret
 .check_movement:
+    ld a, [PLAYER_Y]
+    ld b, a
+    ld a, [PLAYER_X]
+    ld c, a
     ld a, [JOYPAD]
 
     bit BUTTON_RIGHT, a
     jr z, .no_right
     ;right pressed
-    ld b, %00011111
+    ld e, %00011111
+    ld a, c
+    add a, $08
+    ld c, a
     jr .direction_pressed
 .no_right:
     bit BUTTON_LEFT, a
     jr z, .no_left
     ;left pressed
-    ld b, %00101111
+    ld e, %00101111
+    ld a, c
+    sub a, $08
+    ld c, a
     jr .direction_pressed
 .no_left:
     bit BUTTON_UP, a
     jr z, .no_up
     ;up pressed
-    ld b, %01001111
+    ld e, %01001111
+    ld a, b
+    sub a, $08
+    ld b, a
     jr .direction_pressed
 .no_up:
     bit BUTTON_DOWN, a
     jr z, .no_direction_pressed
     ;down pressed
-    ld b, %10001111
+    ld e, %10001111
+    ld a, b
+    add a, $08
+    ld b, a
 .direction_pressed:
+    push de
+    call is_solid
+    pop de
+    jr nz, .no_direction_pressed
     ld hl, PLAYER_MOVING
-    ld [hl], b
-
+    ld [hl], e
 .no_direction_pressed:
     ret
 
@@ -118,11 +137,5 @@ draw_player::
     ldi [hl], a
     ld a, %00000001
     ldi [hl], a
-
-    ;call DMA_ROUTINE
-
-    ;ld hl, VRAM_MAP_BG
-    ;ld a, $80
-    ;ld [hl], a
 
     ret

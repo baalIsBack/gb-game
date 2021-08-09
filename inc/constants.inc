@@ -36,5 +36,6 @@ OAM_BUF                 EQU    $CF00
 ; defined in globals:
 ; VBLANK_FLAG
 ; JOYPAD
+; MAP_POINTER
 ; 
 ; OAM_BUF_END
